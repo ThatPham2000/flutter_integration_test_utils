@@ -4,3 +4,4 @@ library flutter_integration_test_utils;
 
 export 'src/global_tester_config.dart';
 export 'src/custom_tester.dart';
+export 'src/custom_finder.dart';
