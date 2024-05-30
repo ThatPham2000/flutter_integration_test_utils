@@ -576,13 +576,6 @@ class CustomTester {
       await pumpAndSettle(
         timeout: timeout,
       );
-    } else if (settle == SettlePolicy.infiniteAnimationSettle) {
-      final end =
-          DateTime.now().add(settleTimeout ?? const Duration(seconds: 10));
-      while (DateTime.now().isBefore(end)) {
-        await tester.pump();
-        await Future.delayed(const Duration(milliseconds: 17));
-      }
     } else {
       await tester.pump();
     }
@@ -607,7 +600,4 @@ enum SettlePolicy {
   ///
   /// This keeps on rendering new frames until there are no frames pending or timeout is reached. Doesn't throw an exception if timeout has been reached.
   trySettle,
-
-  /// for infinite animation
-  infiniteAnimationSettle,
 }
