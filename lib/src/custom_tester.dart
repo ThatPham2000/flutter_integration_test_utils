@@ -30,7 +30,7 @@ class CustomTester {
     Duration? duration,
     EnginePhase phase = EnginePhase.sendSemanticsUpdate,
   ]) =>
-      tester.pumpWidget(widget, duration, phase);
+      tester.pumpWidget(widget, duration: duration, phase: phase);
 
   Future<void> pump([
     Duration? duration,
@@ -80,7 +80,7 @@ class CustomTester {
     EnginePhase phase = EnginePhase.sendSemanticsUpdate,
     Duration? timeout,
   }) async {
-    await tester.pumpWidget(widget, duration, phase);
+    await tester.pumpWidget(widget, duration: duration, phase: phase);
     await _performPump(
       settlePolicy: SettlePolicy.settle,
       settleTimeout: timeout,
