@@ -217,9 +217,6 @@ class CustomFinder implements MatchFinder {
   /// Returns true if this finder finds at least 1 widget.
   bool get exists => evaluate().isNotEmpty;
 
-  // @override
-  // String describeMatch(Plurality plurality) => finder.describeMatch(plurality);
-
   /// Returns true if this finder finds at least 1 visible widget.
   bool get visible {
     final isVisible = hitTestable().evaluate().isNotEmpty;
@@ -234,15 +231,7 @@ class CustomFinder implements MatchFinder {
   }
 
   @override
-  Iterable<Element> evaluate() => finder.evaluate();
-
-  // @override
-  // Iterable<Element> findInCandidates(Iterable<Element> candidates) {
-  //   return finder.findInCandidates(candidates);
-  // }
-
-  // @override
-  // bool tryEvaluate() => finder.tryEvaluate();
+  FinderResult<Element> evaluate() => finder.evaluate();
 
   @override
   CustomFinder get first {
@@ -273,9 +262,6 @@ class CustomFinder implements MatchFinder {
     return (finder as MatchFinder).matches(candidate);
   }
 
-  // @override
-  // FinderResult<Element> get found => finder.found;
-
   @override
   CustomFinder hitTestable({Alignment at = Alignment.center}) {
     return CustomFinder(finder: finder.hitTestable(at: at), tester: tester);
@@ -289,15 +275,6 @@ class CustomFinder implements MatchFinder {
     // return finder.toString(describeSelf: describeSelf);
     return finder.toString();
   }
-
-  // @override
-  // bool get hasFound => finder.hasFound;
-
-  // @override
-  // void reset() => finder.reset();
-
-  // @override
-  // void runCached(VoidCallback run) => finder.runCached(run);
 
   @override
   bool get skipOffstage => finder.skipOffstage;
@@ -315,6 +292,29 @@ class CustomFinder implements MatchFinder {
   @override
   // ignore: deprecated_member_use
   bool precache() => finder.precache();
+
+  @override
+  String describeMatch(Plurality plurality) => finder.describeMatch(plurality);
+
+  @override
+  Iterable<Element> findInCandidates(Iterable<Element> candidates) {
+    return finder.findInCandidates(candidates);
+  }
+
+  @override
+  FinderResult<Element> get found => finder.found;
+
+  @override
+  bool get hasFound => finder.hasFound;
+
+  @override
+  void reset() => finder.reset();
+
+  @override
+  void runCached(VoidCallback run) => finder.runCached(run);
+
+  @override
+  bool tryEvaluate() => finder.tryEvaluate();
 }
 
 /// Useful methods that make chained finders more readable.
